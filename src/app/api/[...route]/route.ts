@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import { db as prisma } from '@/app/lib/db'
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 export const dynamic = 'force-dynamic'
 
 const app = new Hono().basePath('/api')
-
-const prisma = new PrismaClient()
 
 app.get('/hello', c => {
   return c.json({ msg: 'hi :)' })
