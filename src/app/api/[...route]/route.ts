@@ -3,9 +3,16 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import SegredosRepository from '../repository/SegredosRepository'
 import SegredoController from '@/app/controllers/SegredoController'
+import { cors } from 'hono/cors'
 export const dynamic = 'force-dynamic'
 
 const app = new Hono().basePath('/api')
+app.use(
+  '/api',
+  cors({
+    origin: '0.0.0.0',
+  })
+)
 
 const cataasService = new CataasService('https://cataas.com/cat?json=true')
 const segredosRepository = new SegredosRepository()
