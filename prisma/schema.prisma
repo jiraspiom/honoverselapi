@@ -27,11 +27,11 @@ datasource db {
 // }
 
 model segredos {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  segredo  String
   cor      String?
   coracao  Int?
-  dataAt   DateTime @db.Date
-  segredo  String
   urlImage String?
+  dataAt   DateTime? @db.Date
   // v        Int?     @map("__v")
 }
