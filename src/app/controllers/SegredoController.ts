@@ -20,7 +20,7 @@ class SegredoController {
 
   async getSegredos(ctx: Context) {
     const dados = await this.repository.getAllSegredos(88)
-    return ctx.json({ data: dados })
+    return ctx.json(dados)
   }
 
   async getSegredoById(ctx: Context) {
