@@ -8,22 +8,17 @@ const app = new Hono().basePath('/api')
 const prisma = new PrismaClient()
 
 app.get('/hello', c => {
-  return c.json({ msg: 'ok' })
+  return c.json({ msg: 'hi :)' })
 })
 
-app.get('/teste/:id', async ctx => {
-  const id = ctx.req.param('id')
-  return ctx.json({ msg: `id e ${id}` })
-})
-
-app.post('/teste', async ctx => {
+app.post('/segredos', async ctx => {
   const { nome } = await ctx.req.json()
   return ctx.json({ usuario: nome })
 })
 
-app.get('/usuario', async ctx => {
-  const usuario = prisma.usuario.findMany()
-  return ctx.json({ data: usuario })
+app.get('/segredos', async ctx => {
+  const dados = await prisma.segredos.findMany({ take: 88 })
+  return ctx.json({ data: dados })
 })
 
 // export default handle(app)
