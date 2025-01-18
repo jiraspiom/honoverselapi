@@ -32,6 +32,6 @@ model segredos {
   cor      String?
   coracao  Int?
   urlImage String?
-  dataAt   DateTime? @db.Date
+  dataAt   DateTime? @default(now()) @db.Date
   // v        Int?     @map("__v")
 }
